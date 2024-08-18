@@ -9,7 +9,7 @@ const Header = () => {
         <>
             <div className="flex justify-between bg-black text-white px-10 items-center py-6">
                 <h3 className="text-3xl font-medium hover:cursor-pointer">
-                    <Link to='/home'>EmpBase</Link>
+                    <Link to='/'>EmpBase</Link>
                 </h3>
                 <p className="text-lg">Manage Employee Data of Your Organistation</p>
                 <div className="flex items-center gap-2">

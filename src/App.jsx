@@ -18,22 +18,18 @@ function App() {
         {
           path: 'create',
           element: <Create />,
-          caseSensitive: true
         },
         {
           path: 'update', 
           element: <Update />,
-          caseSensitive: true
         },
         {
           path: 'read',
           element: <Read />,
-          caseSensitive: true
         },
         {
           path: 'delete',
           element: <Delete />,
-          caseSensitive: true
         }
       ]
     }

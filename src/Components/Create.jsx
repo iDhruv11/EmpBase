@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { validateEmail } from "../Utils/validateEmail";
 import { validateNumber } from "../Utils/validateNumber";
 import { setEmployee } from "../Utils/setEmployee";
+import { post } from "../Utils/post";
 
 const Create = () => {
     const name = useRef();
@@ -37,8 +38,8 @@ const Create = () => {
             showPopup("Please Enter your country");
             return ;
         }
-        console.log(setEmployee(name.current.value, mail.current.value, contactNum.current.value, country.current.value, deptName.current.value, empType.current.value));
-        
+        const employee = setEmployee(name.current.value, mail.current.value, contactNum.current.value, country.current.value, deptName.current.value, empType.current.value);
+        post(employee);
           
     }
     return (

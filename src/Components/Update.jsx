@@ -1,8 +1,8 @@
 const Update = () => {
     return (
-        <>
-            <h1>This is update page</h1>
-        </>
+        <div className="bg-black h-[90.8vh]">
+            
+        </div>
     )
 }
 export { Update };
