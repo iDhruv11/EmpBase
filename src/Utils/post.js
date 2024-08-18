@@ -1,16 +1,14 @@
 import axios from "axios";
 
 const post = ( employee ) => {
-    const url = "localhost:5757/saved";
+    const url = "http://localhost:5757/saved";
+    console.log(employee);    
     axios.post(url, employee)
         .then((res)=>{
-            console.log(res);
-            
+            response = res;           
         })
         .catch((err)=>{
-            console.log(err);
-            
+            response = res;            
         })
-    
 }
 export { post };
