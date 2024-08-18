@@ -37,7 +37,8 @@ const Create = () => {
             showPopup("Please Enter your country");
             return ;
         }
-        console.log(setEmployee(name.current.value, mail.current.value, contactNum.current.value, country.current.value, deptName.current.value, empType.current.value));
+        const employee = setEmployee(name.current.value, mail.current.value, contactNum.current.value, country.current.value, deptName.current.value, empType.current.value);
+        post(employee);
         
           
     }
