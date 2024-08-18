@@ -1,11 +1,11 @@
 const setEmployee = (name, mail, contact, country, deptName, empType) => {
     const employee = {
         name, 
-        mail, 
-        deptName, 
+        deptName,
         empType,
-        country,
-        contact
+        mail, 
+        contact,
+        country
     }
     return employee;
 }
