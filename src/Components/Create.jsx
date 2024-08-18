@@ -2,7 +2,11 @@ import { useRef, useState } from "react";
 import { validateEmail } from "../Utils/validateEmail";
 import { validateNumber } from "../Utils/validateNumber";
 import { setEmployee } from "../Utils/setEmployee";
+<<<<<<< HEAD
 import { post } from "../Utils/post";
+=======
+import { post } from "../Utils/post"
+>>>>>>> 42692eb31eb2cd8959ea02fe326f7b4105fa5857
 
 const Create = () => {
     const name = useRef();
@@ -39,7 +43,11 @@ const Create = () => {
             return ;
         }
         const employee = setEmployee(name.current.value, mail.current.value, contactNum.current.value, country.current.value, deptName.current.value, empType.current.value);
+<<<<<<< HEAD
         post(employee);
+=======
+        post(employee);       
+>>>>>>> 42692eb31eb2cd8959ea02fe326f7b4105fa5857
           
     }
     return (
