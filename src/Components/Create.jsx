@@ -36,7 +36,7 @@ const Create = () => {
         }
         const employee = setEmployee(name.current.value, mail.current.value, contactNum.current.value, country.current.value, deptName.current.value, empType.current.value);
         try{
-            // await post(employee);
+            await post(employee);
             showPopup("✅ " + "Employee Created Successfully", setErrorMsg);
             setTimeout(() => {
                 navigate('/')
