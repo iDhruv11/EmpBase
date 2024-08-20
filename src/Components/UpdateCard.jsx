@@ -10,6 +10,7 @@ const UpdateCard = ({ name, deptName, empType, country, phoneNo, emailId }) => {
     const [beingEdited, setBeingEdited] = useState(null);
     const handleEdit = (e) => {
         setBeingEdited(e.currentTarget.id);     
+        e.currentTarget.parent.children[1].focus
     }
     return (
         <div className="inline-flex flex-col items-center border border-white px-10 py-7 gap-6 -mt-48">
@@ -35,7 +36,7 @@ const UpdateCard = ({ name, deptName, empType, country, phoneNo, emailId }) => {
                         type="text"
                         className={`border-b-1 border-white bg-[#121212] text-center`}
                         value={deptName}
-                        disabled={(beingEdited == "name") ? false : true } />
+                        disabled={(beingEdited == "deptName") ? false : true } />
                     <button className="px-2 py-2 rounded-full hover:bg-[#161616] transition-all duration-150 ease-linear"
                         onClick={handleEdit}
                         id="deptName"
@@ -49,7 +50,7 @@ const UpdateCard = ({ name, deptName, empType, country, phoneNo, emailId }) => {
                         type="text"
                         className={`border-b-1 border-white bg-[#121212] text-center`}
                         value={empType}
-                        disabled={(beingEdited == "name") ? false : true } />
+                        disabled={(beingEdited == "empType") ? false : true } />
                     <button className="px-2 py-2 rounded-full hover:bg-[#161616] transition-all duration-150 ease-linear"
                         onClick={handleEdit}
                         id="empType"
@@ -63,7 +64,7 @@ const UpdateCard = ({ name, deptName, empType, country, phoneNo, emailId }) => {
                         type="text"
                         className={`border-b-1 border-white bg-[#121212] text-center`}
                         value={country}
-                        disabled={(beingEdited == "name") ? false : true } />
+                        disabled={(beingEdited == "country") ? false : true } />
                     <button className="px-2 py-2 rounded-full hover:bg-[#161616] transition-all duration-150 ease-linear"
                         onClick={handleEdit}
                         id="country"
@@ -77,7 +78,7 @@ const UpdateCard = ({ name, deptName, empType, country, phoneNo, emailId }) => {
                         type="text"
                         className={`border-b-1 border-white bg-[#121212] text-center`}
                         value={phoneNo}
-                        disabled={(beingEdited == "name") ? false : true } />
+                        disabled={(beingEdited == "phoneNo") ? false : true } />
                     <button className="px-2 py-2 rounded-full hover:bg-[#161616] transition-all duration-150 ease-linear"
                         onClick={handleEdit}
                         id="phoneNo"
@@ -91,7 +92,7 @@ const UpdateCard = ({ name, deptName, empType, country, phoneNo, emailId }) => {
                         type="text"
                         className={`border-b-1 border-white bg-[#121212] text-center`}
                         value={emailId}
-                        disabled={(beingEdited == "name") ? false : true } />
+                        disabled={(beingEdited == "emailId") ? false : true } />
                     <button className="px-2 py-2 rounded-full hover:bg-[#161616] transition-all duration-150 ease-linear"
                         onClick={handleEdit}
                         id="emailId"

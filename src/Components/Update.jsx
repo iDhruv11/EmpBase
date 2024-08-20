@@ -9,7 +9,7 @@ const Update =  () => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [showShimmer, setShowShimmer] = useState(false);
     const [showUpdateCard, setShowUpdateCard] = useState(true);
-    const data = useRef(null);
+    let data = useRef(null);
     const empId = useRef();
 
     const handleSearch = async () => {
