@@ -3,7 +3,8 @@ import { validateEmail } from "../Utils/validateEmail";
 import { validateNumber } from "../Utils/validateNumber";
 import { setEmployee } from "../Utils/setEmployee";
 import { post } from "../Utils/post"
-
+import { useNavigate } from "react-router-dom";
+import { showPopup } from "../Utils/showPopup";
 const Create = () => {
     const name = useRef();
     const mail = useRef();
@@ -12,34 +13,38 @@ const Create = () => {
     const deptName = useRef();
     const empType = useRef();
     const [errorMsg, setErrorMsg] = useState(null);
-    const showPopup = (errMsg) => {
-        setErrorMsg(errMsg);
-        setTimeout(() => {
-            setErrorMsg(null);
-        }, 2000);
-    }
-    
-    const handleSubmit = () => {
+    const navigate = useNavigate();
+        
+    const handleSubmit = async () => {
         const mailRes = validateEmail(mail.current.value);
         const numRes = validateNumber(contactNum.current.value);
         if(mailRes){
-            showPopup(mailRes);
+            showPopup("❌ " + mailRes, setErrorMsg);
             return ;
         }
         if(!name.current.value){
-            showPopup("Name is empty");
+            showPopup("❌ " + "Name is empty", setErrorMsg);
             return ;
         }
         if(numRes){
-            showPopup(numRes);
+            showPopup("❌ " + numRes, setErrorMsg);
             return ;
         }
         if(!country.current.value){
-            showPopup("Please Enter your country");
+            showPopup("❌ " + "Please Enter your country", setErrorMsg);
             return ;
         }
         const employee = setEmployee(name.current.value, mail.current.value, contactNum.current.value, country.current.value, deptName.current.value, empType.current.value);
-        post(employee);       
+        try{
+            // await post(employee);
+            showPopup("Employee Created Successfully", setErrorMsg);
+            setTimeout(() => {
+                navigate('/')
+            }, 1500);
+        }       
+        catch(error){
+            showPopup("❌ " + "Error Creating Employee", setErrorMsg);
+        }
           
     }
     return (
@@ -103,7 +108,7 @@ const Create = () => {
                     onClick={handleSubmit}
                 >Submit</button>
             </div>
-            <div className={`absolute bg-gray-900 px-14 py-10 rounded-md text-lg ${errorMsg ? `opacity-100 top-5` : `opacity-0 -top-20`} transition-all duration-150 ease-linear`}>{(errorMsg ? "❌" + errorMsg : null)}</div>
+            <div className={`absolute bg-gray-900 px-14 py-10 rounded-md text-lg ${errorMsg ? `opacity-100 top-5` : `opacity-0 -top-20`} transition-all duration-150 ease-linear`}>{errorMsg}</div>
         </div>
     )
 }
