@@ -4,8 +4,8 @@ const getOneEmp = async (empId) => {
         const response = await axios.get(`http://localhost:5757/getEmployeeById/${empId}`);
         return response.data;        
     }
-    catch(err){
-        return "❌ " + "Erorr Fetching Employee Details.";        
+    catch(err){        
+        return "❌ Error Fetching Employee Details.";        
     }   
 
 }
