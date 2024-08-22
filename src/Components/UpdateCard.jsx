@@ -9,13 +9,13 @@ import { useNavigate } from "react-router-dom";
 const UpdateCard = ({ id, fullName, departmentName, employeeType, country, phoneNo, emailId }) => {
 
     const [user, setUser] = useState({
-        id : "1",
-        departmentName : "Sales",
-        fullName : "Dhruv Sharma",
-        employeeType : "Full-Time",
-        country : "Australia",
-        phoneNo : "6666666666",
-        emailId : "drv@gmail.com"
+        id,
+        departmentName,
+        fullName,
+        employeeType,
+        country,
+        phoneNo,
+        emailId
     })
     const [errorMsg, setErrorMsg] = useState(null);
     const [beingEdited, setBeingEdited] = useState(null);
