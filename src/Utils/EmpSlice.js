@@ -10,7 +10,7 @@ const EmpSlice = createSlice({
         country : "canada",
         emailId : "drv@gmail.com",
         phoneNo : 3434343434
-    }, {
+    }, /*{
         id: 1,
         fullName : "dhruv sharma",
         departmentName : "Tech", 
@@ -58,8 +58,8 @@ const EmpSlice = createSlice({
         country : "canada",
         emailId : "drv@gmail.com",
         phoneNo : 3434343434
-    }],
-
+    }*/],
+    // initialState: null,
     reducers: {
         addEmployee: (state, action) => {
             return [...action.payload];

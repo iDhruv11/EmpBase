@@ -6,10 +6,10 @@ import { UpdateCard } from "./UpdateCard";
 import { Outlet, useParams } from "react-router-dom";
 
 const Update =  () => {
-    const [showSearch, setShowSearch] = useState(true);
+    const [showSearch, setShowSearch] = useState(false);
     const [errorMsg, setErrorMsg] = useState(null);
     const [showShimmer, setShowShimmer] = useState(false);
-    const [showUpdateCard, setShowUpdateCard] = useState(false);
+    const [showUpdateCard, setShowUpdateCard] = useState(true);
 
     const [data, setData] = useState({
         id: 1, 

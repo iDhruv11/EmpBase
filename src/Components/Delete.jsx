@@ -8,7 +8,7 @@ import { deleteEmp } from "../Utils/deleteEmp";
 const Delete = () => {
 
     const empId = useRef();
-    const [showSearch, setShowSearch] = useState(false);
+    const [showSearch, setShowSearch] = useState(true);
     const [errorMsg, setErrorMsg] = useState(null)
 
     const user = {
@@ -75,7 +75,7 @@ const Delete = () => {
 
                     (() => {
                         const { id, fullName, departmentName, employeeType, country, phoneNo, emailId } = user;
-                        return <EmpCard id={id} name={fullName} deptName={departmentName} empType={employeeType} country={country} phoneNo={phoneNo} emailId={emailId} showOptions={true} />
+                        return <EmpCard id={id} name={fullName} deptName={departmentName} empType={employeeType} country={country} phoneNo={phoneNo} emailId={emailId} showOptions={false} />
                     })()
                 )
 

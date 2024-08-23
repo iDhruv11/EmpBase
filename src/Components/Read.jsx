@@ -32,9 +32,10 @@ const Read = () => {
             <EmpGrid empList={empList} />
         ) : (
             <div className="bg-black min-h-[90.8vh] text-white flex flex-col items-center">
+                
                 {/* error popup */}
                 <div className={`absolute bg-gray-900 px-14 py-10 rounded-md text-lg ${errorMsg ? `opacity-100 top-5` : `opacity-0 -top-20`} transition-all duration-150 ease-linear`}>{errorMsg}</div>
-
+                
                 <div className="flex flex-col items-center gap-5 m-44 relative">
                     <div className="flex flex-row max-w-sm flex-wrap gap-4">
                         <p className="w-full text-center text-3xl">Search Employee By ID</p>
@@ -51,10 +52,7 @@ const Read = () => {
                         className="text-base px-3 font-medium rounded-[.2em] py-1 hover:bg-white hover:text-black transition-all duration-150 ease-linear"
                     >List All Employees
                     </button>
-                    <div className="flex font-medium text-xl gap-3 px-5 py-1 rounded-full hover:bg-[#161616] hover:cursor-pointer transition-all duration-150 ease-linear absolute -left-96 -top-36">
-                        <p>&lt;</p>
-                        <p>Back</p>
-                    </div>
+
                 </div>
             </div>
         )
