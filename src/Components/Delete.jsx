@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { showPopup } from "../Utils/showPopup";
-import { setEmployee } from "../Utils/setEmployee";
 import { getOneEmp } from "../Utils/getOneEmp";
 import { EmpCard } from "./EmpCard";
 import { deleteEmp } from "../Utils/deleteEmp";
@@ -11,32 +10,29 @@ const Delete = () => {
     const [showSearch, setShowSearch] = useState(true);
     const [errorMsg, setErrorMsg] = useState(null)
 
-    const user = {
-        id: 1,
-        fullName: 'Dhruv sharma',
-        departmentName: 'Tech',
-        employeeType: 'Intern',
-        country: 'Canada',
-        emailId: 'drvsr@gmail.com',
-        phoneNo: 3434343434,
-    }
-
+    
+    const user = useRef(null);
     const handleSearch = async () => {
         if (!empId.current.value) {
             showPopup("❌ Employee ID is required!", setErrorMsg);
             return;
         }
-        const user = await getOneEmp(empId.current.value);
-        if (user == "❌ Error Fetching Employee Details.") {
-            showPopup("❌ Error Deleting Employee", setErrorMsg);
+       user.current = await getOneEmp(empId.current.value);
+        if (user.current == "❌ Error Fetching Employee Details.") {
+            showPopup("❌ Employee does not exist.", setErrorMsg);
             return;
         }
         try {
             const deleteRes = await deleteEmp(empId.current.value);
-            setWasDeleted(true);
+            console.log("final success in deleting.");
+            setShowSearch(false);
+            
         }
         catch (err) {
-            showPopup("❌ Error Deleting Employee.", setErrorMsg)
+            // console.log(err);
+            
+            // showPopup("❌ Error Deleting majdoor.", setErrorMsg)
+            
         }
 
     }
@@ -50,6 +46,7 @@ const Delete = () => {
                     <div className="flex px-5 py-1 text-xl font-medium gap-3 rounded-full hover:bg-[#161616] hover:cursor-pointer transition-all duration-150 ease-linear absolute top-10 left-72"
                         onClick={() => {
                             setShowSearch(true)
+                            user.current = null;
                         }}
                     >
                         <p className="">&lt;</p>
@@ -74,7 +71,7 @@ const Delete = () => {
                 ) : (
 
                     (() => {
-                        const { id, fullName, departmentName, employeeType, country, phoneNo, emailId } = user;
+                        const { id, fullName, departmentName, employeeType, country, phoneNo, emailId } = user.current;
                         return <EmpCard id={id} name={fullName} deptName={departmentName} empType={employeeType} country={country} phoneNo={phoneNo} emailId={emailId} showOptions={false} />
                     })()
                 )

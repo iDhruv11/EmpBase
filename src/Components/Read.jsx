@@ -4,6 +4,7 @@ import { getOneEmp } from "../Utils/getOneEmp";
 import { useDispatch, useSelector } from "react-redux";
 import { addEmployee } from "../Utils/EmpSlice";
 import { EmpGrid } from "./EmpGrid";
+import axios from "axios";
 
 const Read = () => {
 
@@ -24,11 +25,26 @@ const Read = () => {
             showPopup(singleEmp, setErrorMsg);
             return;
         }
-        dispatcher(addEmployee(singleEmp));
+        dispatcher(addEmployee([singleEmp]));
 
     }
+    
+    const listAllEmp = () => {
+        axios.get('http://localhost:5757/employees')
+            .then(response => {
+                const empArray = [];
+                response.data.forEach(emp => {
+                    empArray.push(emp);
+                });
+                dispatcher(addEmployee(empArray));
+            })
+            .catch( err => {
+                showPopup("❌ Erorr Fetching Employees List", setErrorMsg);
+            })
+    }
+
     {
-        return (empList) ? (
+        return (empList.length) ? (
             <EmpGrid empList={empList} />
         ) : (
             <div className="bg-black min-h-[90.8vh] text-white flex flex-col items-center">
@@ -50,6 +66,7 @@ const Read = () => {
                     <div className="text-3xl">Or</div>
                     <button
                         className="text-base px-3 font-medium rounded-[.2em] py-1 hover:bg-white hover:text-black transition-all duration-150 ease-linear"
+                        onClick={listAllEmp}
                     >List All Employees
                     </button>
 

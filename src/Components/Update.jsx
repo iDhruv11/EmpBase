@@ -6,20 +6,11 @@ import { UpdateCard } from "./UpdateCard";
 import { Outlet, useParams } from "react-router-dom";
 
 const Update =  () => {
-    const [showSearch, setShowSearch] = useState(false);
+    const [showSearch, setShowSearch] = useState(true);
     const [errorMsg, setErrorMsg] = useState(null);
     const [showShimmer, setShowShimmer] = useState(false);
-    const [showUpdateCard, setShowUpdateCard] = useState(true);
-
-    const [data, setData] = useState({
-        id: 1, 
-        fullName: "Dhruv Sharma",
-        departmentName: "Tech",
-        employeeType: "Intern",
-        country: "USA",
-        phoneNo: "3434343434",
-        emailId: "Ddfsd@gmail.com"
-    })
+    const [showUpdateCard, setShowUpdateCard] = useState(false);
+    const [emp, setEmp] = useState(null)
 
     const empId = useRef();
     const { userId }  = useParams();
@@ -38,14 +29,18 @@ const Update =  () => {
         }
         setShowSearch(false);
         setShowShimmer(true);
-        // data = await getOneEmp(empId.current.value);
-        if(data == "❌ " + "Erorr Fetching Employee Details."){
+        const data = await getOneEmp(empId.current.value);
+       
+        if(data == "❌ Error Fetching Employee Details."){
+            console.log("not found");
+            
             showPopup(data, setErrorMsg);
             setShowSearch(true);
             setShowShimmer(false);
             return ;
         }
         setShowShimmer(false);
+        setEmp(data)
         setShowUpdateCard(true);
 
     }
@@ -74,8 +69,8 @@ const Update =  () => {
 
                 (showUpdateCard) && (
                     (()=>{
-                        const { id, fullName, departmentName, employeeType, country, phoneNo, emailId } = data;
-                        console.log(id, fullName, departmentName, employeeType, country, phoneNo, emailId);
+                        const { id, fullName, departmentName, employeeType, country, phoneNo, emailId } = emp;
+                        // console.log(id, fullName, departmentName, employeeType, country, phoneNo, emailId);
                         // return <UpdateCard id={id} fullName={fullName} departmentName={departmentName} employeeType={employeeType} country={country} phoneNo={phoneNo} emailId={emailId} />
                         return (userId) ? 
                         <Outlet /> : 

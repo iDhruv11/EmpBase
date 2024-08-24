@@ -6,6 +6,7 @@ import { showPopup } from "../Utils/showPopup";
 import {validateEmail} from "../Utils/validateEmail"
 import {validateNumber} from "../Utils/validateNumber"
 import { useNavigate } from "react-router-dom";
+import {post} from "../Utils/post"
 const UpdateCard = ({ id, fullName, departmentName, employeeType, country, phoneNo, emailId }) => {
 
     const [user, setUser] = useState({
@@ -47,9 +48,11 @@ const UpdateCard = ({ id, fullName, departmentName, employeeType, country, phone
         try{
             await post(user);
             showPopup("✅ Employee Info Updated Successfully", setErrorMsg);
-            navigate('/')
+                
         }
         catch(err){
+            console.log(err);
+            
             showPopup("❌ Error Updating Employee Info", setErrorMsg);
         }
         
